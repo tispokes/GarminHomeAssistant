@@ -73,4 +73,6 @@
   <string id="WifiLteExecution">Wi-Fi/LTE execution mode.</string>
   <string id="WifiLteExecutionEnable">Enable executing commands over Wi-Fi/LTE.</string>
   <string id="WifiLteExecutionDescription">Allows the app to start without phone connection (when menu is cached), and prompt to execute command over Wi-Fi/LTE.</string>
+  <string id="additional_header_key_title">Additional HTTP(S) Header - Key</string>
+  <string id="additional_header_value_title">Additional HTTP(S) Header - Value</string>
 </strings>
