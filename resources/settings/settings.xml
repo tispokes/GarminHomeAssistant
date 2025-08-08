@@ -126,4 +126,11 @@
     <settingConfig type="alphaNumeric" readonly="true" />
   </setting>
 
+  <setting propertyKey="@Properties.additional_header_key" title="@Strings.additional_header_key_title">
+            <settingConfig type="alphaNumeric" />
+        </setting>
+        <setting propertyKey="@Properties.additional_header_value" title="@Strings.additional_header_value_title">
+            <settingConfig type="alphaNumeric" />
+        </setting>
+
 </settings>
