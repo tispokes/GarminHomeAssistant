@@ -51,6 +51,8 @@ class Settings {
     private static var mHasService            as Lang.Boolean = false;
     //! Must keep the object so it doesn't get garbage collected.
     private static var mWebhookManager        as WebhookManager?;
+    private static var mAdditionalHeaderKey   as Lang.String = "";
+    private static var mAdditionalHeaderValue as Lang.String = "";
 
     //! Called on application start and then whenever the settings are changed.
     //
@@ -71,6 +73,8 @@ class Settings {
         mMenuAlignment         = Properties.getValue("menu_alignment");
         mIsSensorsLevelEnabled = Properties.getValue("enable_battery_level");
         mBatteryRefreshRate    = Properties.getValue("battery_level_refresh_rate");
+        mAdditionalHeaderKey   = Properties.getValue("additional_header_key")
+        mAdditionalHeaderValue = Properties.getValue("additional_header_value")
     }
 
     //! A webhook is required for non-privileged API calls.
@@ -284,4 +288,17 @@ class Settings {
         }
     }
 
+    //!
+    //! @return The additional HTTP Header key
+    //
+    static function getAdditionalHeaderKey() as Lang.String {
+        return mAdditionalHeaderKey;
+    }
+
+    //!
+    //! @return The additional HTTP Header value
+    //
+    static function getAdditionalHeaderValue() as Lang.String {
+        return mAdditionalHeaderValue;
+    }
 }
