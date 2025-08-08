@@ -48,6 +48,7 @@
   <string id="WifiLtePrompt">Execute over Wi-Fi/LTE?</string>
   <string id="WifiLteExecutionTitle">Sending to Home Assistant.</string>
   <string id="WifiLteExecutionDataError">No data received.</string>
+  <string id="NoCustomHeaderValue">No custom header value set.</string>
 
   <!-- For the settings GUI, strings should be in the order they are used. -->
   <string id="SettingsSelect">Select...</string>
