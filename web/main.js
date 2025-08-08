@@ -8,6 +8,9 @@ if (!localStorage.getItem('info_shown')) {
 let api_url = localStorage.getItem('api_url') ?? '';
 let menu_url = localStorage.getItem('menu_url') ?? '';
 let api_token = localStorage.getItem('api_token') ?? '';
+let custom_header_key = localStorage.getItem("additional_header_key") ?? '';
+let custom_header_value = localStorage.getItem("additional_header_value") ?? '';
+let custom_header = (custom_header_key ?? '') !== '' ? `${custom_header_key}: ${custom_header_value}` : '';
 
 /**
  * Get all entities in HomeAssistant.
@@ -19,6 +22,7 @@ async function get_entities() {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${api_token}`,
+        custom_header,
       },
       mode: 'cors',
       body: `{"template":"[{% for entity in states %}[\\"{{ entity.entity_id }}\\",\\"{{ entity.name }}\\",\\"{{ entity.attributes.icon }}\\"]{% if not loop.last %},{% endif %}{% endfor %}]"}`,
@@ -54,6 +58,7 @@ async function get_devices() {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${api_token}`,
+        custom_header,
       },
       mode: 'cors',
       body: `{"template":"{% set devices = states | map(attribute='entity_id') | map('device_id') | unique | reject('eq', None) | list %}[{% for device in devices %}[\\"{{ device }}\\",\\"{{ device_attr(device, 'name') }}\\"]{% if not loop.last %},{% endif %}{% endfor %}]"}`,
@@ -82,6 +87,7 @@ async function get_areas() {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${api_token}`,
+        custom_header,
       },
       mode: 'cors',
       body: `{"template":"[{% for area in areas() %}[\\"{{ area }}\\",\\"{{ area_name(area) }}\\"]{% if not loop.last %},{% endif %}{% endfor %}]"}`,
@@ -112,6 +118,7 @@ async function get_services() {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${api_token}`,
+        custom_header,
       },
       mode: 'cors',
     });
@@ -506,6 +513,7 @@ require(['vs/editor/editor.main'], async () => {
       const res = await fetch(api_url + '/', {
         headers: {
           Authorization: `Bearer ${api_token}`,
+          custom_header,
         },
         cache: 'no-cache',
         mode: 'cors',
@@ -752,6 +760,7 @@ require(['vs/editor/editor.main'], async () => {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${api_token}`,
+            custom_header,
           },
           mode: 'cors',
           body: `{"template":"${template}"}`,
@@ -809,6 +818,7 @@ require(['vs/editor/editor.main'], async () => {
             method: 'POST',
             headers: {
               Authorization: `Bearer ${api_token}`,
+              custom_header,
             },
             mode: 'cors',
             body: JSON.stringify(data),
@@ -868,6 +878,7 @@ require(['vs/editor/editor.main'], async () => {
             method: 'POST',
             headers: {
               Authorization: `Bearer ${api_token}`,
+              custom_header,
             },
             mode: 'cors',
             body: JSON.stringify({
@@ -927,6 +938,7 @@ require(['vs/editor/editor.main'], async () => {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${api_token}`,
+            custom_header,
           },
           mode: 'cors',
         });
@@ -965,6 +977,7 @@ require(['vs/editor/editor.main'], async () => {
           method: 'POST',
           headers: {
             Authorization: `Bearer ${api_token}`,
+            custom_header,
           },
           mode: 'cors',
           body: `{"template":"${template}"}`,
