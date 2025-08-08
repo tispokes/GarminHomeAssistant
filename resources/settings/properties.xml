@@ -101,4 +101,6 @@
     for trouble shooting.
   -->
   <property id="webhook_id" type="string"></property>
+  <property id="additional_header_key" type="string"></property>
+  <property id="additional_header_value" type="string"></property>
 </properties>
