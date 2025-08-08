@@ -170,7 +170,8 @@ class HomeAssistantService {
                     :method       => Communications.HTTP_REQUEST_METHOD_POST,
                     :headers      => {
                         "Content-Type"  => Communications.REQUEST_CONTENT_TYPE_JSON,
-                        "Authorization" => "Bearer " + Settings.getApiKey()
+                        "Authorization" => "Bearer " + Settings.getApiKey(),
+                        Settings.getAdditionalHeaderKey() => Settings.getAdditionalHeaderValue()
                     },
                     :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON,
                     :context      => {
